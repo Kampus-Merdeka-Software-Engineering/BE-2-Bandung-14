@@ -42,7 +42,7 @@ async function getSingleCustomers(id) {
 
 async function createCustomers(data) {
     const result = await db.query(
-        `INSERT INTO customers (first_name, last_name, check_in, check_out, adults, childrens, room, mobile_phone, transfer) VALUES ('${data.first_name}','${data.last_name}','${data.check_in}','${data.check_out}','${data.adults}','${data.childrens}','${data.room}','${data.mobile_phone}','${data.transfer}')`
+        `INSERT INTO customers (first_name, last_name, check_in, check_out, adults, children, room, mobile_number, bukti_TF) VALUES ('${data.first_name}','${data.last_name}','${data.check_in}','${data.check_out}','${data.adults}','${data.children}','${data.room}','${data.mobile_number}','${data.bukti_TF}')`
     )
 
     let message = 'Error in adding customers'

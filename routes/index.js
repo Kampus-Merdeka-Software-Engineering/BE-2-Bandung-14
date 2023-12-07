@@ -1,6 +1,8 @@
 const express = require('express')
+const {getAllCustomers, postCustomers} = require('../controller/controller.js');
 const router = express.Router()
-const service = require('../service')
+const service = require('../service/index.js');
+// const service = require('../service/db.js')
 
 router.get('/', async function (req, res, next) {
     try {
@@ -9,7 +11,7 @@ router.get('/', async function (req, res, next) {
         console.error('Error while getting all customers', error.message)
         next(error)
     }
-})
+});
 
 router.get('/:id', async function (req, res, next) {
     try {
@@ -18,7 +20,7 @@ router.get('/:id', async function (req, res, next) {
         console.error('Error while getting single customers', error.message)
         next(error)
     }
-})
+});
 
 router.post('/', async function (req, res, next) {
     try {
@@ -27,7 +29,7 @@ router.post('/', async function (req, res, next) {
         console.error('Error while adding customers', error.message)
         next(error)
     }
-})
+});
 router.delete('/:id', async function (req, res, next) {
     try {
         res.json(await service.deleteCustomers(req.params.id))
@@ -35,7 +37,7 @@ router.delete('/:id', async function (req, res, next) {
         console.error('Error while deleting customers', error.message)
         next(error)
     }
-})
+});
 
 router.put('/:id', async function (req, res, next) {
     try {
@@ -44,6 +46,6 @@ router.put('/:id', async function (req, res, next) {
         console.error('Error while editing customers', error.message)
         next(error)
     }
-})
+});
 
-module.exports = router
+module.exports = router;
