@@ -12,9 +12,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 
 app.get('/', (req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello World!');
     res.json({
         message: 'OK'
     })
