@@ -20,7 +20,12 @@ app.get('/', (req, res) => {
     })
 })
 
-app.use('/customers', router);
+app.use('/v1/customers', router);
+
+app.get('/v2/customers', async (req, res) => {
+    const users = await prisma.customers.findMany();
+    res.json(users);
+  });
 
 app.use((err, req, res, next) => {
     const status = err.statusCode || 500
@@ -29,11 +34,6 @@ app.use((err, req, res, next) => {
         message: err.message
     })
 })
-
-app.get('/customers', async (req, res) => {
-    const users = await prisma.customers.findMany();
-    res.json(users);
-  });
 
 app.listen(port, "0.0.0.0", () => {
     console.log(`app is running on port ${port}`)
