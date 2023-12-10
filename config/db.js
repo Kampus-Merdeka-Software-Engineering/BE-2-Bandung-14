@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 const db = new Sequelize("customer", "root", "", {
-  host: "",
+  host: "localhost", //ini harus di isi
   dialect: "mysql",
   port:"3306",
 
