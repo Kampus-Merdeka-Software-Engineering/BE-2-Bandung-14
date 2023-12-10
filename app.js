@@ -46,19 +46,8 @@ app.get('/customers/confirm', async (req, res) => {
   }
 });
 
-// Function to get the latest Pengiriman
-// const getLatestCustomers = async () => {
-//   try {
-//     const latestItem = await Pengiriman.findOne({
-//       order: [['createdAt', 'DESC']],
-//     });
-//     return latestItem;
-//   } catch (error) {
-//     throw error;
-//   }
-// };
 
-// GET berdasarkan id
+// GET berdasarkan mobile_number
 app.get('/check-id/:mobile_number', async (req, res) => {
   try {
     const id = req.params.mobile_number;
@@ -75,74 +64,6 @@ app.get('/check-id/:mobile_number', async (req, res) => {
 });
 
 
-// Integrasi ke FE
-// app.post('/submit', (req, res) => {
-//   const selectedValue = req.body.choice;
-
-//   // Menangani POST request dari form
-//   const dataToInsert = {
-//     first_name: req.body.first_name,
-//     last_name: req.body.last_name,
-//     check_in: req.body.check_in,
-//     check_out: req.body.check_out,
-//     adults: req.body.adults,
-//     childrens: req.body.childrens,
-//     room: req.body.room,
-//     address: req.body.address,
-//     mobile_number: req.mobile_number
-//   };
-
-  // Simpan data radio button ke database
-//   const query = 'INSERT INTO customer (room) VALUES (?)';
-//   connection.query(query, [selectedValue], (err, results) => {
-//     if (err) throw err;
-
-//     console.log('Data berhasil disimpan ke database');
-//     res.send('Data berhasil disimpan ke database');
-//   });
-
-//   const query1 = 'INSERT INTO nama_tabel SET ?';
-//   connection.query(query, dataToInsert, (err, results) => {
-//     if (err) {
-//       console.error('Error executing query: ' + err.stack);
-//       res.send('Error occurred while saving data to database');
-//       return;
-//     }
-    
-//     console.log('Data berhasil disimpan ke database');
-//     res.send('Data berhasil disimpan ke database');
-//   });
-// });
-
-
-// function setupCustomerForm() {
-//   const form = document.getElementById("order-form");
-//   console.log(form, "ini form");
-//   form.addEventListener("submit", async function (event) {
-//     event.preventDefault();
-//     const formData = new FormData(form);
-//     const formProps = Object.fromEntries(formData);
-//     console.log(formprops, "ini form props");
-//     try {
-//       const response = await fetch("http://localhost:3000/customers", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(formProps),
-//       });
-//       const data = await response.json();
-//       console.log("Success:", data);
-//     } catch (error) {
-//       console.error("Error", error);
-//     }
-//   });
-// }
-
-
-
-
-
 // Function to get a Customer by mobile_number using findOne
 const getCustomersById = async (mobile_number) => {
   try {
@@ -154,9 +75,6 @@ const getCustomersById = async (mobile_number) => {
     throw error;
   }
 };
-
-
-
 
 
 app.post('/customers', async (req, res) => {
